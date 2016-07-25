@@ -3,19 +3,19 @@ package com.greybirdsoft.genki;
 import com.greybirdsoft.genki.commands.CommandBuilder;
 
 public class GenkiExecution {
-  private final OnFinishTaskListener onFinishTaskListener;
+  private final CommandExecutionListener commandExecutionListener;
 
-  public GenkiExecution(OnFinishTaskListener onFinishTaskListener, String command) {
-    this.onFinishTaskListener = onFinishTaskListener;
-    new RunShellCommandTask(onFinishTaskListener, command);
+  public GenkiExecution(CommandExecutionListener commandExecutionListener, String command) {
+    this.commandExecutionListener = commandExecutionListener;
+    new RunShellCommandTask(commandExecutionListener, command);
   }
 
-  public GenkiExecution(OnFinishTaskListener onFinishTaskListener, String... command) {
-    this.onFinishTaskListener = onFinishTaskListener;
-    new RunShellCommandTask(onFinishTaskListener, command);
+  public GenkiExecution(CommandExecutionListener commandExecutionListener, String... command) {
+    this.commandExecutionListener = commandExecutionListener;
+    new RunShellCommandTask(commandExecutionListener, command);
   }
 
   public CommandBuilder and() {
-    return new CommandBuilder(onFinishTaskListener);
+    return new CommandBuilder(commandExecutionListener);
   }
 }

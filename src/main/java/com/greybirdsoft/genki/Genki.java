@@ -1,6 +1,5 @@
 package com.greybirdsoft.genki;
 
-import android.content.Context;
 import com.greybirdsoft.genki.commands.CommandBuilder;
 import com.stericson.RootTools.RootTools;
 
@@ -12,9 +11,9 @@ public class Genki {
     RootTools.debugMode = builder.isDebug;
   }
 
-  public static Builder initialize(Context context) {
+  public static Builder initialize() {
     if (instance == null) {
-      instance = new GenkiInstance(context);
+      instance = new GenkiInstance();
     }
 
     return new Builder();
@@ -24,8 +23,8 @@ public class Genki {
     instance.checkRoot(rootListener);
   }
 
-  public static CommandBuilder execute(final OnFinishTaskListener onFinishTaskListener) {
-    return instance.execute(onFinishTaskListener);
+  public static CommandBuilder execute(final CommandExecutionListener commandExecutionListener) {
+    return instance.execute(commandExecutionListener);
   }
 
   public static class Builder {

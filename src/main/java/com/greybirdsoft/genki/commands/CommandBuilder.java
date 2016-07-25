@@ -1,21 +1,21 @@
 package com.greybirdsoft.genki.commands;
 
 import com.greybirdsoft.genki.GenkiExecution;
-import com.greybirdsoft.genki.OnFinishTaskListener;
+import com.greybirdsoft.genki.CommandExecutionListener;
 
 public class CommandBuilder {
-  final private OnFinishTaskListener onFinishTaskListener;
+  final private CommandExecutionListener commandExecutionListener;
 
-  public CommandBuilder(final OnFinishTaskListener onFinishTaskListener) {
-    this.onFinishTaskListener = onFinishTaskListener;
+  public CommandBuilder(final CommandExecutionListener commandExecutionListener) {
+    this.commandExecutionListener = commandExecutionListener;
   }
 
   public GenkiExecution command(String command) {
-    return new GenkiExecution(onFinishTaskListener, command);
+    return new GenkiExecution(commandExecutionListener, command);
   }
 
   public GenkiExecution commands(String... command) {
-    return new GenkiExecution(onFinishTaskListener, command);
+    return new GenkiExecution(commandExecutionListener, command);
   }
 
   public Copy copy(String from) {
